@@ -4,6 +4,11 @@
 
 本專案從 W4 的 RESTful Notes API 延伸，使用 PostgreSQL 實作分類的一對多關係，以及筆記與標籤的多對多關係。
 
+## 課程教材
+
+- [W01–W04：FastAPI + PostgreSQL 後端系統教材](./W01_W04_GUIDE.md)
+- [W07–W08：EER、PostgreSQL Schema 與可重用 View](./W07_W08_EER_SCHEMA.md)
+
 ## 使用技術
 
 - Python 3.14
