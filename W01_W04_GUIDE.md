@@ -118,6 +118,10 @@ git push -u origin main
 ### Git心得
 - 本機先有 commit 時，GitHub 建立 repository 最好保持完全空白；不要同時勾選建立 README 或 LICENSE，這樣第一次 `git push -u origin main` 最簡單。
 
+### W1 學習心得
+
+一開始建立 FastAPI 專案時，我才發現寫出 API 程式只是第一步，還要先把資料夾整理好、建立虛擬環境，並確認套件安裝在正確的位置。完成 `/health` 後，我可以用瀏覽器確認服務有沒有正常啟動，也能在 `/docs` 直接看到 API 說明，覺得比自己從頭寫文件方便很多。練習 Git 時，我也學到本機和 GitHub 如果一開始各自有不同檔案，合併時就要多處理一次；所以先想好 repository 要怎麼建立，後面的 push 會比較順。安裝 Git 後，VS Code 也不一定會立刻讀到新的 PATH，重新開啟程式才能載入更新後的環境設定。這週讓我知道，專案骨架、工具設定和版本管理雖然不像 API 功能那麼明顯，卻會影響後面每一步能不能順利進行。
+
 ---
 
 <a id="week-02"></a>
@@ -287,9 +291,8 @@ python .\app\core\db_test.py
 - [ ] Test API and Dataformat (了解Swagger用法，具備測試API能力)
 
 ### 心得
-- VScode Extension: SQLTools PostgreSQL/Cockroach Driver，方便VSCode可以執行SQL
-- psql: 另外建立db帳號 (postgres權限勿濫用)，須要給予public schema建表權限
-- AI coding會建立更清楚的program structures。E.g. routers (REST api path) → repositories (get DataSQL) → schemas (response model)
+
+安裝 PostgreSQL 並讓 Python 成功連線後，我才比較清楚 API 和資料庫是兩個不同的部分：API 負責接收請求，資料庫負責保存資料，中間還需要正確的連線設定。用 `psql` 查詢和新增資料，讓我能直接確認資料到底有沒有寫進資料庫；VS Code 的 SQLTools 擴充功能也讓我不用一直切換工具就能查看資料。另一個重要觀念是不要什麼事情都用 `postgres` 管理者帳號做，開發時可以建立自己的資料庫帳號，只給它需要的權限。資料庫連線字串則放在 `.env`，避免把密碼直接寫進程式或上傳到 GitHub。這週我也開始理解把路由、資料存取和資料格式分開的好處：程式各自負責一件事，之後要修改時比較容易找到位置。
 
 
 ---
@@ -321,7 +324,8 @@ app\main.py
 - [ ] 盡量測試，列出問題討論solutions
 
 ### 心得
--
+
+這週把 FastAPI 同時當成網站和 API 的伺服器，讓我看到同一個服務可以依照不同網址提供不同內容：首頁可以回傳網頁，API 路徑則負責資料請求。把 API 統一放在 `/api/` 底下，路徑比較容易辨認，也比較不會和網站頁面混在一起。靜態檔案也不能不加限制地全部公開，所以需要只提供網頁真正會用到的檔案。測試時我注意到瀏覽器可能會保留舊的快取，讓畫面看起來像程式沒有更新；用無痕視窗或開發者工具停用快取，可以幫助我分辨是程式本身有問題，還是瀏覽器仍在使用舊檔案。這讓我學到，測試網站時不能只看畫面，也要留意瀏覽器和伺服器之間實際傳送了什麼。
 
 ---
 
@@ -548,6 +552,7 @@ app.include_router(notes.router)
 - [ ] 錯誤情境（找不到資源）回傳正確的 HTTP 狀態碼
 
 ### 學習心得
--
+
+完成 Notes 的 CRUD 後，我對 API 的操作方式比較有概念了：`POST` 用來新增、`GET` 用來查詢、`PUT` 用來更新、`DELETE` 用來刪除。比起只看程式碼，我用 `/docs` 實際送出請求後，更容易看懂資料如何從 API 傳到資料庫，再回到畫面。錯誤情況也很重要，例如查詢或刪除不存在的筆記時，回傳 `404` 才能讓使用 API 的人知道資料沒有找到，而不是誤以為操作成功。程式分成 Router、Schema、Repository 和資料庫連線幾個部分後，雖然檔案變多了，但每一層的工作比較清楚，修改 API 格式或資料庫查詢時也比較不容易全部混在一起。教材中的 SQLAlchemy 範例讓我認識 ORM 的概念；實際專案目前使用 Psycopg 和 Repository 函式，兩種寫法需要分清楚，不能直接把範例當成現有程式碼照抄。
 
 ---
