@@ -195,6 +195,10 @@ categories 1 ─────< notes
 - PostgreSQL 學術分類 function、view 與 API 練習見 [`W05_POSTGRES_VIEW.md`](W05_POSTGRES_VIEW.md)。
 - 本專案首頁也包含 Web Programming W5 的 DOM 互動範例，見下方「W5 Web：JavaScript DOM」。
 
+## W7–W8：EER、Schema 與 View
+
+循序練習本專案的分類階層資料模型、PostgreSQL Schema 與 `vd_subclass` View，包含 SQL 驗證、最小權限及 FastAPI 端到端測試，見 [`W07_W08_EER_SCHEMA.md`](W07_W08_EER_SCHEMA.md)。
+
 ## W5 Web：JavaScript DOM 與事件
 
 首頁讀取 `public/json/teacher_ops.json` 與 `public/json/dashboard_cards.json`，示範側邊欄
