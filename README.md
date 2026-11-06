@@ -8,6 +8,8 @@
 
 - [W01–W04：FastAPI + PostgreSQL 後端系統教材](./W01_W04_GUIDE.md)
 - [W07–W08：EER、PostgreSQL Schema 與可重用 View](./W07_W08_EER_SCHEMA.md)
+- [W09：可預約時段、查詢與限時保留作業](./W09_APPOINTMENT_RESERVATION.md)
+- [每週學習心得（Learning Log）](./LEARNING_LOG.md)（W9 心得目前是草稿，請依實際操作補完）
 
 ## 使用技術
 
